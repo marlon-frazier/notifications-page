@@ -6,9 +6,13 @@ const markAll = document.querySelector('.mark-all')
 
 for (let i = 0; i < user.length; i++){
     user[i].addEventListener('click', ()=>{
+        if (!user[i].classList.contains('read') && (count >= 0)){
+            notifications.innerText = count--
+        }
+        user[i].classList.add('read')
         user[i].style.backgroundColor = 'white'
         blip[i].classList.add('hidden')
-        notifications.innerText = count--
+        
     })
 }
 
@@ -20,6 +24,7 @@ markAll.addEventListener('click', () => {
     blip.forEach( dot => {
         dot.classList.add('hidden')
     })
-    notifications.innerText = 0
+    count = 0
+    notifications.innerText = count
 })
 console.log(blip)
